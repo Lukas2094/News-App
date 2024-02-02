@@ -21,8 +21,6 @@ function App() {
     fetchNews();
   }, []);
   
-  console.log(news)
-
   return (
     <div className="App">
           <Header />
