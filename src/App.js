@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState , useEffect } from "react";
+import Header from "./components/Header";
+import newsService from "./services/newsServices";
+import News from "./components/News";
 
 function App() {
+
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const articles = await newsService.getNews();
+        setNews(articles);
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      }
+    };
+  
+    fetchNews();
+  }, []);
+  
+  console.log(news)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          <Header />
+          <News News={news}/>
     </div>
   );
-}
+};
 
 export default App;
