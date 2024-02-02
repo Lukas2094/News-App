@@ -1,4 +1,4 @@
-1 - Baixe o repositorio
+1 - Baixe o repositorio https://github.com/Lukas2094/News-App
 
 2 - execute o yarn para instalar as dependencias 
 
